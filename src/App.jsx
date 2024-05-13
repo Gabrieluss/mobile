@@ -1,25 +1,38 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, Text } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {View,SafeAreaView } from "react-native"
 import HomeScreen from "./components/HomeScreen";
 import LoginScreen from "./components/LoginScreen";
 import RegisterScreen from "./components/RegisterScreen";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer } from "@react-navigation/native";
 
 
-const Stack = createNativeStackNavigator();
 
-export default props=> {
+const Stack = createNativeStackNavigator()
+
+export default props => {
+
     return(
         <SafeAreaView style={{flex:1}}>
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="Home">
-                    <Stack.Screen name="Home" component={HomeScreen}/>
-                    <Stack.Screen name="Login" component={LoginScreen}/>
-                    <Stack.Screen name="Register" component={RegisterScreen}/>
+                <Stack.Navigator>
+                    <Stack.Screen name="Home" component={HomeScreen} options={{
+                        headerShown: false
+                        }}/>
+                    <Stack.Screen name="Login" component={LoginScreen} options={{
+                     headerTitle:"",
+                     headerStyle:{backgroundColor:"#FFF7FC"},
+                     headerTransparent:100
+                        }}
+                     
+                     />
+                    <Stack.Screen name="Register" component={RegisterScreen} options={{
+                     headerTitle:"",
+                     headerStyle:{backgroundColor:"#FFF7FC"},
+                     headerTransparent:100
+                        }}/>
                 </Stack.Navigator>
             </NavigationContainer>
         </SafeAreaView>
     )
 }
-

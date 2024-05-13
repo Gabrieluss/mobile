@@ -1,45 +1,72 @@
 import React from "react";
-import { View,Text, Button, Image, StyleSheet, Pressable } from "react-native";
+import { Text, View,Image, Pressable,StyleSheet} from "react-native"
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default props=> {
+
+
+export default props => {
+
     return(
+        <View style={style.body}>
+            <Text style={style.text}>GAMEON</Text>
 
-         <View style={{
-            flex:1,
-        }}>
-            <Text style={styles.baseText}>
-            GAMEON
-            </Text>
-        <Image
-        source={require('../imagens/homeLogo.png')}
-        style={
-            {
-                width:430,
-                height:220,
-                alignItems: "center",
-                justifyContent: "center",
-                marginTop:200
+            <Pressable style={style.img}>
+                <Image source={require('../imagens/homeLogo.png')} style={style.imgFt}/>
+            </Pressable>
 
-            }
-        }/> 
-
-        <Pressable style={{marginTop:180}}>       
-            <Button title="Vamos começar"
-            color="#A64CC1"
-            onPress={() => props.navigation.navigate('Login')}/>
-        </Pressable>
+            <Pressable style={style.button} onPress={()=> props.navigation.navigate('Login')}>
+                <Text style={style.textBtn}>Let´s Begin</Text>
+                <Icon name="arrow-forward-circle-sharp" size={25} color="#FFF"/>
+            </Pressable>
         </View>
     )
 }
- 
-const styles = StyleSheet.create({
-    baseText:{
-       color:"black",
-       fontSize: 50,
-       fontFamily: "Jacquard 24",
-       fontWeight: "bold",
-       textAlign: "center",
-       marginTop:50
+
+
+const style = StyleSheet.create(
+    {   
+        body:{
+            backgroundColor:"#FFF7FC",
+            flexGrow:1
+        },
+        text:{
+            fontSize:40,
+            fontWeight:"bold",
+            color: "black",
+            fontFamily:"Pixelify Sans",
+            textAlign:"center",
+            justifyContent:"center",
+            alignItems:"center",
+            marginTop: 45
+        },
+        img:{
+            alignItems:"center",
+            marginTop: 200,
+        },
+        imgFt:{
+            width:300,
+            height:250,
+        },
+        button:{
+            flexDirection:"row",
+            justifyContent:"space-between",
+            alignItems:"center",
+            marginTop: 150,
+            marginLeft:45,
+            paddingLeft:20,
+            paddingRight:20,
+            width:350,
+            height:50,
+            borderRadius:5,
+            backgroundColor:"#8644A2",
+        },
+        textBtn:{
+            color:"#FFF",
+            fontSize:15,
+            fontFamily:"Pixelify Sans",
+            fontWeight:"bold",
+            
+        }
+
     }
-});
+)
